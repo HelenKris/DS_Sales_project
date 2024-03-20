@@ -1,4 +1,6 @@
 [core]
-    remote = myremote
+    remote = dataremote
 ['remote "myremote"']
     url = gdrive://1aA6hVGzPbVzuBDMCaP54e3aT4ZmOZPdY
+['remote "dataremote"']
+    url = gdrive://18sWVMKJkFCKCZu3VslcswhqfI7-6OkYj
