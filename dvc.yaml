@@ -1,0 +1,17 @@
+stages:
+#   download_data:
+#     cmd: dvc pull
+#     outs:
+#       - data.dvc/item_categories.csv
+#       - data.dvc/items.csv
+#       - data.dvc/shops.csv
+#       - data.dvc/sales_train.csv
+#       - data.dvc/test.csv
+
+  make_dataset:
+    cmd: src/data/make_dataset.py
+    deps:
+      - src/data/make_dataset.py
+      - data.dvc/sales_train.csv
+    outs:
+      - data.dvc/prepared_data.csv
