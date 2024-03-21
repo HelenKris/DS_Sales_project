@@ -1,17 +1,24 @@
 stages:
-#   download_data:
-#     cmd: dvc pull
-#     outs:
-#       - data.dvc/item_categories.csv
-#       - data.dvc/items.csv
-#       - data.dvc/shops.csv
-#       - data.dvc/sales_train.csv
-#       - data.dvc/test.csv
-
-  make_dataset:
-    cmd: src/data/make_dataset.py
+  download_data:
+    cmd: python src/data/get_dataset.py data.dvc/item_categories.csv data.dvc/items.csv data.dvc/shops.csv data.dvc/sales_train.csv data.dvc/test.csv data.dvc/prepared_data.csv
     deps:
-      - src/data/make_dataset.py
+      - data.dvc/item_categories.csv
+      - data.dvc/items.csv
+      - data.dvc/shops.csv
       - data.dvc/sales_train.csv
+      - data.dvc/test.csv
+      - src/data/get_dataset.py
     outs:
       - data.dvc/prepared_data.csv
+
+  prepare_dataset:
+    cmd: python src/models/prepare_datasets.py data.dvc/prepared_data.csv data/processed/X_train.csv data/processed/y_train.csv data/processed/X_val.csv data/processed/y_val.csv data/processed/X_test.csv
+    deps:
+      - src/models/prepare_datasets.py
+      - data.dvc/prepared_data.csv
+    outs:
+      - data/processed/X_train.csv
+      - data/processed/y_train.csv
+      - data/processed/X_val.csv
+      - data/processed/y_val.csv
+      - data/processed/X_test.csv

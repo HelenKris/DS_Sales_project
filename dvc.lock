@@ -1,0 +1,35 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: python src/data/get_dataset.py data.dvc/item_categories.csv data.dvc/items.csv
+      data.dvc/shops.csv data.dvc/sales_train.csv data.dvc/test.csv data.dvc/prepared_data.csv
+    deps:
+    - path: data.dvc/item_categories.csv
+      hash: md5
+      md5: 05c62f1bed0c0655924fc62fe921fb56
+      size: 3573
+    - path: data.dvc/items.csv
+      hash: md5
+      md5: effd92430acdb03efca8542f7270e334
+      size: 1568417
+    - path: data.dvc/sales_train.csv
+      hash: md5
+      md5: bc7e53cc48549aba37d690093256facf
+      size: 94603866
+    - path: data.dvc/shops.csv
+      hash: md5
+      md5: beb40ce29c3db609a93b19ebbd1667b1
+      size: 2977
+    - path: data.dvc/test.csv
+      hash: md5
+      md5: aabf81b3af9a427e897aa77f77e8b971
+      size: 3182735
+    - path: src/data/get_dataset.py
+      hash: md5
+      md5: c2c57f1dda8ca0d0f263e86b944d00d0
+      size: 4891
+    outs:
+    - path: data.dvc/prepared_data.csv
+      hash: md5
+      md5: 3ddb603c38454cea4eaf029e4be30ec5
+      size: 190650395
